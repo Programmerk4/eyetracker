@@ -1,0 +1,15 @@
+{
+  "name": "deepfake-test",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "wrangler pages dev .",
+    "deploy": "wrangler pages deploy ."
+  },
+  "devDependencies": {
+    "wrangler": "^3.70.0",
+    "hono": "^4.5.10",
+    "uuid": "^9.0.1",
+    "typescript": "^5.4.0"
+  }
+}

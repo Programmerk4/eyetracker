@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distinguish Deepfake</title>
+
+    <link rel="stylesheet" href="style.css"> 
+
+    <link rel="preconnect" href="https://jctqmbsxufpqylqbouwg.supabase.co" crossorigin>
+    <link rel="preload" as="image" href="https://jctqmbsxufpqylqbouwg.supabase.co/storage/v1/object/public/gbucket/example.png" fetchpriority="high">
+    
+    <link rel="prefetch" href="pis.html">
+    <link rel="prefetch" href="cf.html">
+</head>
+<body>
+    <div class="page-container">
+        <div class="page-content">
+
+            
+            <!-- 提示框-->
+            <div id="custom-alert" class="custom-alert-overlay" style="display:none;">
+            <div class="custom-alert-box">
+                <h3 id="custom-alert-title">Notice</h3>
+                <p id="custom-alert-message">This is a custom alert message.</p>
+                <div class="custom-alert-actions">
+                <button id="custom-alert-btn1">OK</button>
+                <button id="custom-alert-btn2" style="display:none;">Cancel</button>
+                </div>
+            </div>
+            </div>
+
+
+
+
+            <!-- Loading 层 -->
+            <div id="loading-screen">
+                <div id="loading-text">Loading 0%</div>
+                <div id="loading-bar-wrapper">
+                <div id="loading-bar"></div>
+                </div>
+            </div>
+
+            <!-- Cookie 同意提示 -->
+            <div id="privacy-notice" role="status" aria-live="polite" hidden>
+            <div class="privacy-notice__inner">
+                <span class="privacy-notice__text">
+                [Cookies Warning] We do not use cookies. This study records questionnaire responses, task performance, and mouse/keyboard interaction metadata during the study.
+                </span>
+                <button id="privacy-ok" class="privacy-btn">OK</button>
+            </div>
+            </div>
+
+            <!-- 隐私政策页面 -->
+            <div id="policy-page" class="page">
+                <div class="policy-container">
+                <h2 id="policy-image-title">Privacy Policy</h2>
+                <!-- 内容会动态加载 -->
+                <div id="policy-text" class="policy-text"></div>
+                <!-- 提示文字 -->
+                <p id="policy-image-note" class="policy-note">I have acknowledged the relevant policy.</p>
+                <!-- 互斥单选框 -->
+                <div id="cf-radio-option" class="policy-radio-group" role="radiogroup" aria-labelledby="policy-radio-label">
+                    <div class="radio-option">
+                    <input type="radio" id="agree-policy" name="policy-acknowledgment" value="agree" class="policy-radio">
+                    <label for="agree-policy" class="radio-label">I confirm that I have read and understand the information above and voluntarily consent to participate in this study.</label>
+                    </div>
+                    <div class="radio-option">
+                    <input type="radio" id="disagree-policy" name="policy-acknowledgment" value="disagree" class="policy-radio">
+                    <label for="disagree-policy" class="radio-label">I do not wish to participate in this study.</label>
+                    </div>
+                </div>
+                <!-- 底部按钮 -->
+                <div class="policy-actions">
+                    <button id="policy-image-btn" class="policy-btn" disabled>Continue</button>
+                </div>
+                </div>
+            </div>
+
+            <!-- 隐私政策页面：文本 -->
+            <div id="policy-text-page" class="page">
+                <div class="policy-container">
+                    <h2>Privacy Policy</h2>
+
+                    <!-- 可滚动正文 -->
+                    <article class="policy-article">
+                        <p>Thank you for visiting our research project website. This privacy policy explains how we collect, use, store and protect your information when you visit this website to participate in our research project.</p>
+
+                        <h3>Data Collected</h3>
+                        <p>To conduct this research, we will collect the following types of information:</p>
+                        <ul>
+                        <li>You will be asked to answer demographic questions.</li>
+                        <li>Information regarding your knowledge on ICT and technology competency.</li>
+                        <li>Your performance in the deepfake detection tasks, including your answers and self-reported confidence and stress levels.</li>
+                        <li>Mouse and keyboard interaction metadata during the study, such as timestamps, mouse movement, clicks, scroll-wheel actions, and key press/release events.</li>
+                        </ul>
+                        <p>This study is designed to be anonymous and will not collect any personally identifiable or sensitive data. All data will be identified only by a code.</p>
+
+                        <h3>How We Use These Data</h3>
+                        <p>Specifically, the collected data will be used to:</p>
+                        <ul>
+                        <li>Investigate whether simple and quick training can effectively improve people's performance in detecting deepfake facial images.</li>
+                        <li>Examine what factors may affect people’s performance in deepfake detection.</li>
+                        <li>Publish, present, and communicate the aggregated and anonymized results in scientific journals, at conferences, and on the websites of the research team members.</li>
+                        <li>Help guide the creation of training programs and public awareness campaigns on digital literacy and detecting deceptive online content.</li>
+                        </ul>
+
+                        <h3>Data Protection</h3>
+                        <p>We take your data security very seriously and have implemented strict measures to protect your information:</p>
+                        <ul>
+                        <li>The data you provide through the online questionnaire will first be stored by Supabase, whose privacy policy can be viewed here: <a href="https://supabase.com/privacy" target="_blank" rel="noopener">https://supabase.com/privacy</a>. After the survey is closed, any data that could potentially identify an individual will be transferred to a secure server at the Cambridge Judge Business School, accessible only by authorized IT staff and the research team.</li>
+                        <li>We will make every effort to ensure that your identity will not be identified. All data will be identified only by a code, and personal details will be kept in a locked file or on a secure computer accessible only by the immediate research team members.</li>
+                        </ul>
+
+                        <h3>Your Rights</h3>
+                        <p>You have several rights regarding your data:</p>
+                        <ul>
+                        <li>You have the right to understand how your personal data is being used.</li>
+                        <li>Participation is entirely voluntary. You are free to withdraw at any time during the survey without giving a reason by closing your browser. A decision to withdraw will not affect you in any way and will involve no penalty or loss.</li>
+                        </ul>
+                        <p>To exercise any of these rights, please contact the research team using the details provided below.</p>
+
+                        <h3>Changes to This Privacy Policy</h3>
+                        <p>We may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date. We encourage you to periodically review this page for the latest information on our privacy practices.</p>
+
+                        <h3>Contact Us</h3>
+                        <p>If you have any questions or concerns about this privacy policy or our data handling practices, please feel free to contact the researcher: Dr Luning Sun, University of Cambridge (<a href="mailto:l.sun@jbs.cam.ac.uk">l.sun@jbs.cam.ac.uk</a>).</p>
+                    </article>
+
+                    <div class="policy-actions">
+                        <button class="policy-btn" onclick="closePolicyTextOverlay()">Close</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- 引导页面 -->
+            <div id="introduction-page" class="page">
+                <div class="policy-container">
+                    <h2>Introduction</h2>
+
+                    <!-- Scrollable Body -->
+                    <article class="policy-article">
+
+                        <p>This study consists of three stages: <strong>Pre-training Detection Session</strong>, <strong>Training Session</strong> (with a short training video and some practice tasks) and <strong>Post-training Detection Session</strong>.</p>
+
+                        <p>Each <strong>Detection Session</strong> includes <strong>single image</strong> tasks only. You will be asked to judge whether each image is real or fake.</p>
+                        <p>The number of questions may vary depending on the assigned image set.</p>
+
+                        <p><strong>Important!</strong></p>
+                        <ul>
+                            <li>
+                                <p><strong>Performance Bonus!</strong> An extra bonus is available for the top 30% of performers <b>within your assigned group</b>, based on your total score across both Deepfake Detection Sessions (1 and 2).</p>
+                                <ul>
+                                <li><p><strong>Top 10% of performers:</strong> Earn an extra <strong>£10</strong> bonus.</p></li>
+                                <li><p><strong>Ranks 10% - 30%:</strong> Earn an extra <strong>£5</strong> bonus.</p></li>
+                                </ul>
+                                <p>Answer carefully to maximize your score!</p>
+                            </li>
+
+                            <li>There is <strong>no time limit</strong> per question, so please take the time you need to make an accurate choice.</li>
+
+                            <li>Please <b>do not</b> <u>refresh the page, go back, or close the browser window</u> during the test, as this may interrupt your progress or cause you to lose your answers.</li>
+
+                            <li><b>Please note:</b> We will include <b>one attention-check question in each Detection Session</b>. These questions use the <b>same format as the main tasks</b> and are <b>simple to answer</b> if you follow the instructions carefully.</li>
+                        </ul>
+                        <p><strong>Examples</strong></p>
+
+                        <p>Before starting the <strong>Deepfake Detection Session</strong>, you will complete a short example to practice.</p>
+
+                        <p>In this example, you will be shown a single image and asked to decide if it is real or fake.</p>
+
+                        <p>Please click "Continue" to start.</p>
+
+                    </article>
+
+                    <div class="policy-actions">
+                        <button class="policy-btn" onclick="goToPage('introduction-test-page')">Continue</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 指导页面 -->
+            <div id="introduction-test-page" class="page test-page">
+                <div class="test-header-instruction">
+                    <h2 id="introduction-title">Example session</h2>
+                    <div class="practice-instructions">
+                        <p>This is a guided example to help you get familiar with the task.</p>
+                        <ul>
+                            <li><p>Click the <strong>Zoom In</strong> button below the image to enlarge it.</p></li>
+                            <li><p>While zoomed in, you can use your <strong>mouse scroll wheel</strong> to zoom in and out.</p></li>
+                            <li><p>Click the <strong>Reset</strong> button at the top right to return the image to its default enlarged size.</p></li>
+                            <li><p>Click the <strong>Close</strong> button at the top right to exit zoom mode.</p></li>
+                            <li><p>After examining the image, click the <strong>FAKE</strong> or <strong>REAL</strong> button to make your choice.</p></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="single-test-container">
+                    <div class="content-wrapper">
+                    <button class="test-button fake-button" onclick="instruction_click()">FAKE</button>
+                    <!-- <button class="zoom-button" onclick="instruction_click()">instructionFAKE</button> -->
+
+                    <div class="image-block-instruction">
+                        <div class="image-container">
+                        <img id="introduction-image" class="test-image" src="https://jctqmbsxufpqylqbouwg.supabase.co/storage/v1/object/public/gbucket/example.png" alt="Test image">
+                        </div>
+                        <button class="zoom-button" onclick="zoomImage('introduction-image')">Zoom In</button>
+                    </div>
+
+                    <button class="test-button real-button" onclick="instruction_click()">REAL</button>
+                    <!-- <button class="zoom-button" onclick="instruction_click()">REAL</button> -->
+                    </div>
+                </div>
+                <!-- <div class="introduction-nav">
+                    <button class="nav-button zoom-button" onclick="instruction_click()">Click there to start the formal Test</button>
+                </div> -->
+            </div>
+
+            
+            <!-- 选择页面 -->
+            <div id="select-page" class="page active">
+                <div class="button-container">
+                    <!-- <button id="info-button" class="main-button">User Information</button> -->
+                    <button id="pre-test-button" class="main-button" disabled>Pre-training Detection Session</button>
+                    <button id="video-button" class="main-button" disabled>Training Session</button>
+                    <!-- <button id="train-button" class="main-button" disabled>Train</button> -->
+                    <!-- <button id="train-button" class="main-button">Train</button> -->
+                    <button id="final-test-button" class="main-button" disabled>Post-training Detection Session</button>
+                </div>
+            </div>
+
+            <!-- 问卷页面 -->
+            <div id="questionnaire-page" class="page">
+                <!-- <h2>User Information  Registeration</h2> -->
+                <!-- <h2>List</h2> -->
+                <div class="question">
+                <div id="questionnaire-content"></div>
+                </div>
+                <button id="submit-questionnaire">Submit</button>
+            </div>
+
+            <div id="confidence-page" class="page">
+                <h2>User Information  Registeration</h2>
+                <div id="confidence-content"></div>
+                <button id="submit-confidence">Submit</button>
+            </div>
+
+            <!-- 单图测试页面 -->
+            <div id="single-test-page" class="page test-page">
+                <div class="test-header">
+                    <h2 id="single-test-title">Pre-test: Single Image</h2>
+                    <p id="single-test-progress">Progress: 1/11</p>
+                </div>
+                <div class="single-test-container">
+                <div class="content-wrapper">
+                    <button class="test-button fake-button" onclick="submitSingleTestResult(0)">FAKE</button>
+                    <!-- <button class="zoom-button" onclick="submitSingleTestResult(0)">FAKE</button> -->
+
+                    <div class="image-block">
+                        <div class="image-container">
+                        <img id="single-test-image" class="test-image" src="" alt="Test image">
+                        </div>
+                        <!-- Zoom 按钮放在图片正下方 -->
+                        <button class="zoom-button" onclick="zoomImage('single-test-image')">Zoom In</button>
+                    </div>
+
+                    <button class="test-button real-button" onclick="submitSingleTestResult(1)">REAL</button>
+                    <!-- <button class="zoom-button" onclick="submitSingleTestResult(1)">REAL</button> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 训练页面 -->
+            <div id="train-page" class="page test-page">
+                <div class="test-header">
+                    <h2 id="train-title">Practice tasks</h2>
+                    <!-- <p id="train-progress">Progress: 1/10</p> -->
+                    <p id="descipt-train">Some trouble occured.</p>
+                </div>
+                <div class="single-test-container">
+                <div class="content-wrapper">
+                    <button id="train-left-button" class="test-button fake-button" onclick="submitSingleTestResult(0)">FAKE</button>
+                    <!-- <button id="train-left-button" class="zoom-button" onclick="submitSingleTestResult(0)">FAKE</button> -->
+
+                    <div class="image-block">
+                        <div class="image-container">
+                        <img id="train-image" class="test-image" src="" alt="Test image">
+                        </div>
+                        <button class="zoom-button" onclick="zoomImage('train-image')">Zoom In</button>
+                    </div>
+
+                    <button id="train-right-button" class="test-button real-button" onclick="submitSingleTestResult(1)">REAL</button>
+                    <!-- <button id="train-right-button" class="zoom-button" onclick="submitSingleTestResult(1)">REAL</button> -->
+                </div>
+
+                </div>
+            </div>
+
+            <!-- 双图测试页面 -->
+            <div id="dual-test-page" class="page test-page">
+                <div class="test-header">
+                    <h2 id="dual-test-title">Pre-test: Side by Side</h2>
+                    <p id="dual-test-progress">Progress: 1/11</p>
+                </div>
+                <div class="dual-test-container">
+                    <div class="image-block-dual">
+                        <div class="image-container-dual">
+                            <img id="dual-test-image1" class="test-image" src="" alt="Test image 1">
+                        </div>
+                        <div class="dual-button-container">
+                            <button class="zoom-button" onclick="zoomImage('dual-test-image1')">Zoom In</button>
+                            <button class="test-button real-button" onclick="submitDualTestResult(0)">This is Real</button>
+                        </div>
+                        <!-- <button class="zoom-button" onclick="submitDualTestResult(0)">This is Real</button> -->
+                    </div>
+
+                    <div class="image-block-dual">
+                        <div class="image-container-dual">
+                            <img id="dual-test-image2" class="test-image" src="" alt="Test image 2">
+                        </div>
+                        <div class="dual-button-container">
+                            <button class="zoom-button" onclick="zoomImage('dual-test-image2')">Zoom In</button>
+                            <button class="test-button real-button" onclick="submitDualTestResult(1)">This is Real</button>
+                        </div>
+                        <!-- <button class="zoom-button" onclick="submitDualTestResult(1)">This is Real</button> -->
+                    </div>
+                </div>
+                <!-- <div class="navigation"> -->
+                    <!-- <button class="nav-button" onclick="goToPage('select-page')">Home</button> -->
+                    <!-- <button class="nav-button" id="dual-test-next">Next</button> --> 
+                <!-- </div> -->
+            </div>
+
+            <!-- 视频页面 -->
+            <div id="video-page" class="page test-page">
+                <!-- <div class="space">
+                    
+                </div> -->
+                <div class="test-header">
+                    <h2>Training Video</h2>
+                </div>
+                <div class="video-container">
+                    <video id="instructional-video" controls>
+                        <source id="video-source" src="https://jctqmbsxufpqylqbouwg.supabase.co/storage/v1/object/public/gbucket/instruction_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-nav">
+                        <button class="nav-button" onclick="pauseVideoAndReturn()">Next Section</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 完成页面 -->
+            <!-- <div id="completed-page" class="page">
+                <div style="text-align: center; padding: 50px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <h2>Thank You for Participating!</h2>
+                    <p>You have completed all tests.</p>
+                    <p id="final-score"><p>
+                    <button class="nav-button" onclick="window.location.href='https://app.prolific.com/submissions/complete?cc=CPLZPVSR'">Return to Prolific</button>
+                </div>
+            </div> -->
+            <!-- 完成页面 -->
+            <div id="completed-page" class="page">
+                <div style="text-align: center; padding: 50px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <h2>Thank You for Participating!</h2>
+                    <p>You have successfully completed the study. Your performance summary is shown below.</p>
+                    <p id="final-score"></p>
+
+                    <!-- 第一步：选择反馈还是直接返回 -->
+                    <!-- <div id="feedback-choice">
+                    <p>Would you like to provide optional feedback to help us improve?</p>
+                    <button class="nav-button" onclick="showFeedbackForm()">I want to provide</button>
+                    <button class="nav-button" onclick="returnToProlific()">Return to Prolific</button>
+                    </div> -->
+
+                    <!-- 第二步：反馈表单（默认隐藏） -->
+                    <div id="feedback-form" style="display:block; text-align:left; max-width:600px; margin:20px auto; padding:20px; border:1px solid #ccc; border-radius:8px;">
+                    <h3>Feedback</h3>
+                    <p>We would greatly appreciate your feedback to help us improve this study.</p>
+                    <br>
+
+                    <!-- Q1: 单选 - 社会影响程度 -->
+                    <div style="margin-top:15px;">
+                        <label><b>1. Do you agree that deepfake technology is a significant societal problem?</b></label><br/>
+                        <label><input type="radio" name="q1" value="Strongly disagree"> Strongly disagree</label> &nbsp;
+                        <label><input type="radio" name="q1" value="Disagree"> Disagree</label> &nbsp;
+                        <label><input type="radio" name="q1" value="Neutral"> Neutral</label> &nbsp;
+                        <label><input type="radio" name="q1" value="Agree"> Agree</label> &nbsp;
+                        <label><input type="radio" name="q1" value="Strongly agree"> Strongly agree</label>
+                    </div>
+                    <br>
+
+                    <!-- Q2: 单选 - 训练是否有帮助 -->
+                    <div style="margin-top:15px;">
+                        <label><b>2. Do you agree that the training session was helpful for improving your ability to identify deepfake images?</b></label><br/>
+                        <label><input type="radio" name="q2" value="Strongly disagree"> Strongly disagree</label> &nbsp;
+                        <label><input type="radio" name="q2" value="Disagree"> Disagree</label> &nbsp;
+                        <label><input type="radio" name="q2" value="Neutral"> Neutral</label> &nbsp;
+                        <label><input type="radio" name="q2" value="Agree"> Agree</label> &nbsp;
+                        <label><input type="radio" name="q2" value="Strongly agree"> Strongly agree</label>
+                    </div>
+                    <br>
+
+                    <!-- Q3: 文本 - 训练中有用的方面 -->
+                    <!-- <div style="margin-top:15px;">
+                        <label for="q3"><b>3. What aspects of the training do you find particularly useful?</b></label><br/>
+                        <label><input type="checkbox" name="q3-2" value="video">Training video</label> &nbsp;
+                        <label><input type="checkbox" name="q3-2" value="image">Practice tasks</label>
+                        <textarea id="q3" rows="4" style="width:100%;"></textarea>
+                    </div> -->
+
+                    <!-- Q4: 文本 - 识别线索 -->
+                    <!-- <div style="margin-top:15px;">
+                        <label for="q4"><b>4. What are the main clues you now look for when identifying deepfake images?</b></label><br/>
+                        <label><input type="checkbox" name="q4-2" value="background">Background problems</label> &nbsp;
+                        <label><input type="checkbox" name="q4-2" value="hair">Unnatural hair</label> &nbsp;
+                        <label><input type="checkbox" name="q4-2" value="skin">Unnatural facial skin</label><br>
+
+                        <label><input type="checkbox" name="q4-2" value="accessory">Accessory rendering anomalies</label> &nbsp;
+                        <label><input type="checkbox" name="q4-2" value="style">Overly Perfect and Idealized Style</label>
+                        <textarea id="q4" rows="4" style="width:100%;"></textarea>
+                    </div> -->
+
+                    <div style="margin-top:15px;">
+                        <label for="q3"><b>3. What aspects of the training do you find particularly useful?</b></label><br/>
+                        <label><input type="checkbox" name="q3-2" value="video">Training video</label> &nbsp;
+                        <label><input type="checkbox" name="q3-2" value="image">Practice tasks</label> &nbsp;
+                        
+                        <label><input type="checkbox" id="q3-other-checkbox"> Others</label>
+
+                        <textarea id="q3" rows="4" style="width:100%; display:none; margin-top: 8px;" placeholder="Please specify..."></textarea>
+                    </div>
+                    <br>
+
+                    <div style="margin-top:15px;">
+                        <label for="q4"><b>4. What are the main clues you now look for when identifying deepfake images?</b></label><br/>
+                        <label><input type="checkbox" name="q4-2" value="background">Background problems</label> &nbsp;
+                        <label><input type="checkbox" name="q4-2" value="hair">Unnatural hair</label> &nbsp;
+                        <label><input type="checkbox" name="q4-2" value="skin">Unnatural facial skin</label><br>
+                        <label><input type="checkbox" name="q4-2" value="accessory">Accessory rendering anomalies</label> &nbsp;
+                        <label><input type="checkbox" name="q4-2" value="style">Overly Perfect and Idealized Style</label> &nbsp;
+
+                        <label><input type="checkbox" id="q4-other-checkbox"> Others</label>
+
+                        <textarea id="q4" rows="4" style="width:100%; display:none; margin-top: 8px;" placeholder="Please specify..."></textarea>
+                    </div>
+                    <br>
+
+                    <!-- Q5: 文本 - 其它意见 -->
+                    <div style="margin-top:15px;">
+                        <label for="q5"><b>5. Do you have any other feedback or comments?</b></label><br/>
+                        <textarea id="q5" rows="4" style="width:100%;"></textarea>
+                    </div>
+                    </div>
+
+
+                    <!-- 第三步：返回按钮（提交后显示） -->
+                    <!-- <div style="margin-top:20px;">
+                    </div> -->
+                    <button id="prolific-btn" class="zoom-button" style="display:block;" onclick="submitFeedback()">
+                        Submit feedback
+                    </button>
+                </div>
+            </div>
+            <!-- 图片放大模态框 -->
+            <div id="zoom-modal">
+                <div id="zoom-container">
+                    <img id="zoom-img" src="" oncontextmenu="return false;" alt="Zoomed image">
+                </div>
+                <div class="modal-controls">
+                    <button class="modal-button zoom-button-introduction" onclick="resetZoom()">Reset</button>
+                    <button class="modal-button zoom-button-introduction" onclick="closeZoom()">Close</button>
+                </div>
+            </div>
+        </div>
+        <!-- <div>
+            <div id="userinfo"> Unregistered User </div>
+            <button onclick="">Show privacy policy</button>
+        </div> -->
+        <div class="top-bar">
+            <div id="userinfo">Unregistered User</div>
+            <button class="icon-button" onclick="openPolicyTextOverlay()" title="Show privacy policy">
+                Show Privacy Policy
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                <path d="M12 2C6.5 2 2 5.6 2 10c0 5.2 6.6 11.2 9.3 13.1a1 1 0 0 0 1.4 0C15.4 21.2 22 15.2 22 10c0-4.4-4.5-8-10-8zm0 10.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0-7c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

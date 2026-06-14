@@ -1,0 +1,849 @@
+        /* ====== 基础变量 ====== */
+        :root{
+            --bg: #fff;
+            --fg: #000;
+            --primary-start:#1a73e8;
+            --primary-end:#2b65d9;
+            --muted:#555;
+            --danger:#ff4444;
+            --success:#00C851;
+            --panel:#333;
+            --normal:#c9c9c9;
+            --radius:10px;
+            --gap:20px;
+        }
+
+        /* ====== 全局与排版 ====== */
+        body{
+            margin:0;
+            display:flex;
+            flex-direction:column;
+            min-height:100vh;
+            background:var(--bg);
+            color:var(--fg);
+            font-family:'Times New Roman', Times, serif;
+            overflow:hidden; /* 页面滚动交给 .page-content */
+        }
+        button{ 
+            cursor:pointer; 
+            font-family:inherit;
+            font-size: clamp(0.5rem, 2.2vh, 5.0rem);
+        }
+
+        /* ====== 页面框架 ====== */
+        .page-container{
+            display:flex;
+            flex-direction:column;
+            height:100vh;
+        }
+        /* .page-content{
+            flex:1;
+            padding: 20px;
+            overflow-y:auto;
+        } */
+        .page-content{
+            flex-grow: 1; /* 只定义“成长”属性，让它填充剩余空间 */
+            /* padding: 20px; */
+            overflow-y: auto;
+            /* 【重要】为了避免内容滚动时与底部栏重叠，需要给它一个最小高度 */
+            min-height: 0;
+        }
+
+        /* 仅激活页显示 */
+        .page{
+            display:none !important;
+            flex-direction:column;
+            height:100%;
+            /* height:auto; */
+        }
+        .page.active{ display:flex !important; }
+
+        /* 选择页居中 */
+        #select-page{
+            align-items:center;
+            justify-content:center;
+        }
+
+        /* ====== 按钮与网格 ====== */
+        .button-container{
+            display:grid;
+            grid-template-columns:1fr;   /* 一行一个按钮 */
+            gap:var(--gap);
+            width:80%;
+            max-width:800px;
+        }
+
+        /* 统一按钮基础样式 */
+        .main-button,
+        .test-button,
+        .nav-button,
+        .zoom-button{
+            border:none;
+            border-radius:var(--radius);
+        }
+
+        .main-button{
+            padding:20px;
+            font-size:1.2rem;
+            background:linear-gradient(135deg, var(--primary-start), var(--primary-end));
+            color:#fff;
+            transition:transform .3s ease;
+        }
+        .nav-button:hover{ transform:scale(1.05); }
+        .zoom-button:hover{ transform:scale(1.05); }
+        .test-button:hover{ transform:scale(1.05); }
+        .main-button:hover{ transform:scale(1.05); }
+        .main-button:disabled{ background:#999; cursor:not-allowed; transform:none; }
+
+        /* .test-button{ padding:15px 30px; font-size:1.1rem; } */
+        
+        /* .test-button{ padding:15px 30px; } */
+        .test-button {
+            padding:
+                clamp(8px, 2vh, 15px)
+                clamp(16px, 4vw, 30px);
+        }
+        .fake-button{ background:var(--panel); color:#fff; }
+        .real-button{ background:var(--panel); color:#fff; }
+        .next-button{ background:var(--primary-start); color:#fff; }
+
+        .nav-button,
+        .zoom-button{
+            background:var(--muted);
+            color:#fff;
+        }
+        .nav-button{ padding:10px 20px; }
+        /* .zoom-button{ padding:8px 16px; font-size:1rem; margin-top:10px; align-self:center; }*/
+        .zoom-button{ padding:8px 16px; margin-top:10px; align-self:center; }
+
+        /* ====== 问卷 ====== */
+        #questionnaire-page{overflow:visible; }
+        .question {
+            margin: 5px;
+        }
+
+        .question-section{
+            margin-bottom:30px;
+            padding:15px;
+            background:var(--panel);
+            border-radius:8px;
+            background:#cbcbcb; color:#000000; border:none; border-radius:4px;
+        }
+        .question{ margin-bottom:15px; }
+        .question p{ font-size:1.1rem; margin-bottom:10px; white-space: pre-line;  }
+        /* 未完成题目的轻微高亮提示 */
+        .question.missing{
+        outline: 2px solid #ff6b6b;
+        border-radius: 6px;
+        scroll-margin-top: 80px; /* 避免被顶栏挡住时可以稍微下移 */
+        }
+
+
+        .options{ display:flex; flex-direction:column; gap:8px; }
+        .option{ display:flex; align-items:center; gap:10px; }
+
+        input[type="text"]{
+            width:100%; 
+            max-width:300px;
+            padding:8px; border:1px solid #ccc; border-radius:4px;
+        }
+        #submit-questionnaire{
+            margin-top:20px; margin-left: 20px; margin-right: 20px; padding:12px 24px; font-size:1rem;
+            background:#1a73e8; color:#fff; border:1px; border-radius:4px;
+        }
+        /* #submit-questionnaire:hover{ transform:scale(1.05); } */
+
+        .notice-wrap {
+            margin-bottom: 16px;
+            max-height: 60vh;          /* 可按需调整 */
+            overflow: auto;            /* 图片在此容器内滚动 */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 8px;
+            background: #fff;
+        }
+        .notice-img { display:block; width:90%; height:auto; }
+
+        /* ====== 测试页面 ====== */
+        .test-page{ 
+            /* padding:20px;  */
+            box-sizing:border-box; 
+            align-items: center;
+        }
+        
+
+        
+        /* .practice-instructions {
+            text-align: center;
+        } */
+
+        .practice-instructions {
+            text-align: left;     /* 内部文字左对齐 */
+            line-height: clamp(0.5, 1, 5rem);
+        }
+
+
+        /* .test-header{ text-align:center; margin-bottom:20px; } */
+        .test-header {
+            text-align: center;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column; /* 让内部元素垂直排列 */
+            align-items: center;   /* 让所有子元素水平居中 */
+            height: 15vh;
+            width: 80vw;
+        }
+
+        .test-header h2 {
+            /* ===== 新增：使用clamp()让标题大小自适应 ===== */
+            font-size: clamp(0.5rem, 2.2vh, 5.0rem);
+        }
+
+        .test-header p{
+            /* ===== 修改：让进度文字也自适应 ===== */
+            font-size: clamp(0.5rem, 2.2vh, 5rem);
+            /* line-height: 1.5; */
+            margin: 8px 0;
+        }
+
+        .test-header-instruction {
+            text-align: center;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column; /* 让内部元素垂直排列 */
+            align-items: center;   /* 让所有子元素水平居中 */
+            height: 30vh;
+            width: 100vw;
+        }
+
+        .test-header-instruction h2 {
+            /* ===== 新增：使用clamp()让标题大小自适应 ===== */
+            font-size: clamp(0.5rem, 2.2vh, 5.0rem);
+        }
+
+        .test-header-instruction p{
+            /* ===== 修改：让进度文字也自适应 ===== */
+            font-size: clamp(0.5rem, 2.2vh, 5rem);
+            /* line-height: 1.5; */
+            margin: 8px 0;
+        }
+
+        .practice-instructions p {
+            /* ===== 修改：让进度文字也自适应 ===== */
+            font-size: clamp(0.5rem, 2vh, 2.5rem);
+            line-height: 1;
+            margin: 8px 0;
+        }
+        
+
+        /* 单图/双图容器相同：合并 */
+        /* .single-test-container{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:30px;
+            flex:1;
+            max-width: 100%;
+            width: 80vw;
+            height: 55vh;
+        } */
+        .single-test-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex: 1;
+            max-width: 100%;
+            width: 80vw;
+            height: 55vh;
+        }
+
+        .content-wrapper {
+            display: flex;
+            align-items: center;      /* 负责垂直对齐 */
+            justify-content: center;  /* <<< 新增：负责水平对齐 */
+            gap: 10px;           
+            width: 100%;     
+        }
+        /* .dual-test-container{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex:1;
+            max-height: 100%;
+            max-width: 100%;
+            width: 80vw;
+            height: 55vh;
+        } */
+        
+        .dual-test-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            flex: 1;
+            max-height: 100%;
+            max-width: 100%;
+            width: 80vw;
+            height: 55vh;
+        }
+
+
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+            width: 80%;
+            height: 80%;
+            aspect-ratio: 1 / 1;
+
+            /* background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px; */
+            overflow: hidden;
+        }
+
+        .image-container-dual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+            max-width: 80%;
+            max-height: 80%;
+            aspect-ratio: 1 / 1;
+
+            /* background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px; */
+            overflow: hidden;
+        }
+
+        /* 图片按比例缩放，不会拉伸变形 */
+        .test-image {
+            width: 90%;
+            height: 90%;
+            object-fit: contain; /* 保证完整显示，等比缩放 */
+            /* border-radius: 10px; */
+            pointer-events: none; /* 禁用所有鼠标事件 */
+            -webkit-user-select: none; /* 谷歌/Safari */
+            -moz-user-select: none;    /* 火狐 */
+            -ms-user-select: none;     /* IE10+ */
+            user-select: none;         /* 标准语法 */
+        }
+
+        .navigation{ display:flex; justify-content:space-between; margin-top:20px; }
+
+        /* ====== 视频页 ====== */
+        #video-page{ padding:20px; flex-direction:column; }
+        .video-container{
+            display:flex; flex-direction:column; align-items:center;
+            justify-content:flex-start; flex:1;
+        }
+        .space {
+            height: 20vh;
+        }
+        /* #instructional-video{ max-width:80%; max-height:70vh; } */
+        #instructional-video{
+            /* ===== 修改开始 ===== */
+            width: 100%;                  /* 宽度优先撑满父容器 */
+            max-width: 900px;             /* 在大屏幕上，最大宽度不超过900px，避免画面过大 */
+            max-height: 60vh;             /* 维持高度限制，防止视频过高撑开页面 */
+            
+            /* (可选) 增加圆角和阴影，提升视觉质感，与整体风格统一 */
+            border-radius: var(--radius, 10px); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            /* ===== 修改结束 ===== */
+        }
+
+        .video-nav{ margin-top:20px; }
+
+        /* ====== 遮罩：加载/放大 ====== */
+        #loading,
+        #zoom-modal{
+            position:fixed; inset:0;
+            display:none;
+            align-items:center; justify-content:center;
+            z-index:2000;
+        }
+        #loading{
+            background:rgba(0,0,0,.7);
+            font-size:1.5rem;
+            z-index:1000;
+        }
+        #zoom-modal{ background:rgba(0,0,0,.9); }
+
+        #zoom-container{
+            position:relative; width:90%; height:90%; overflow:hidden;
+        }
+        #zoom-img{
+            position:absolute; top:50%; left:50%;
+            transform-origin:center; transition:transform .1s ease;
+            max-width:none; max-height:none; cursor:grab;
+        }
+        #zoom-img:active{ cursor:grabbing; }
+
+        .modal-controls{
+            position:absolute; top:20px; right:20px; z-index:2010;
+        }
+        .modal-button{
+            background:rgba(255,255,255,.3);
+            border:none; color:#fff; padding:10px; margin-left:10px;
+            border-radius:5px; cursor:pointer;
+        }
+
+
+
+        /* ===== Minimal Privacy Notice (no cookies) ===== */
+        #privacy-notice{
+        position: fixed; left: 0; right: 0; bottom: 0;
+        z-index: 3000;
+        background: var(--panel, #333); color: #fff;
+        transform: translateY(0);
+        box-shadow: 0 -6px 18px rgba(0,0,0,.12);
+        transition: transform .15s ease;
+        }
+        #privacy-notice.closing{ transform: translateY(100%); }
+
+        .privacy-notice__inner{
+        max-width: 1100px; margin: 0 auto;
+        padding: 10px 14px;
+        display: flex; gap: 10px; align-items: center; justify-content: space-between;
+        }
+        .privacy-notice__text{ font-size: .95rem; line-height: 1.4; }
+
+        .privacy-btn{
+        border: none; border-radius: var(--radius, 10px);
+        padding: 8px 12px; font-size: .9rem; cursor: pointer;
+        background: linear-gradient(135deg, var(--primary-start, #1a73e8), var(--primary-end, #2b65d9));
+        color: #fff;
+        }
+
+        /* 避免遮挡主要内容 */
+        .page-content.has-privacy-bar{ padding-bottom: 64px; }
+
+        @media (prefers-reduced-motion: reduce){
+        #privacy-notice{ transition: none; }
+        }
+
+        
+        /* 新的图像外层容器 */
+        .image-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px; /* 图片与按钮之间的间距 */
+            width: 40%;
+            height: 60%;
+        }
+
+        .image-block-instruction {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px; /* 图片与按钮之间的间距 */
+            width: 30%;
+            height: 60%;
+        }
+
+        .image-block-dual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            /* 宽度 = (100% - 总间距) / 元素数量 */
+            width: calc((70% - 30px) / 2);
+            height: 90%;
+        }
+
+        .dual-button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* 单图页面下的 Zoom 按钮居中 */
+        .zoom-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        /* .test-page p {
+        font-size: 24px;
+        line-height: 1.6;
+        } */
+
+        .main-button {
+            font-size: 24px;  /* 默认 1rem，大概是 16px，这里可以改成 1.2rem、18px、20px 等 */
+        }
+
+        /*全局把 padding 纳入尺寸，避免 100% + padding 溢出 */
+        *, *::before, *::after { box-sizing: border-box; }
+
+        /*下拉框*/
+        select, input[type="text"]{
+        width: 100%;
+        max-width: 300px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        }
+
+        /*隐私政策的图标*/
+        /* .top-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px 12px;
+        background: #f5f5f5;
+        border-bottom: 1px solid #ddd;
+        font-size: 0.95rem;
+        } */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 12px;
+            background: #f5f5f5;
+            border-top: 1px solid #ddd; /* 改为上边框，更符合底部栏的视觉 */
+            font-size: 0.95rem;
+            flex-shrink: 0; /* 新增：防止此元素在任何情况下被压缩 */
+            height: 5vh;
+        }
+
+        .icon-button {
+        border: none;
+        background: none;
+        padding: 4px;
+        border-radius: 6px;
+        cursor: pointer;
+        color: #333;
+        transition: background 0.2s;
+        }
+
+        .icon-button:hover {
+        background: rgba(0,0,0,0.08);
+        }
+
+
+        /*政策页面*/
+        /* ===== Privacy Policy Page ===== */
+        .policy-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        gap: 16px;
+        }
+
+        .policy-image-wrap {
+        max-height: 70vh;       /* 限制高度，太长的图可以滚动 */
+        overflow-y: auto;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 8px;
+        background: #fff;
+        width: 100%;
+        max-width: 800px;
+        }
+
+        .policy-image-wrap img {
+        display: block;
+        width: 100%;
+        height: auto;
+        }
+
+        .policy-note {
+        font-size: 1rem;
+        color: var(--muted, #555);
+        text-align: center;
+        }
+
+        .policy-actions {
+        display: flex;
+        justify-content: center;
+        }
+
+        .policy-btn{
+        border: none;
+        border-radius: var(--radius, 10px);
+        padding: 10px 14px;
+        font-size: 1rem;
+        cursor: pointer;
+        background: linear-gradient(135deg, var(--primary-start, #1a73e8), var(--primary-end, #2b65d9));
+        color: #fff;
+        }
+        .policy-btn:disabled{ background:#999; cursor:not-allowed; transform:none; }
+
+        /* .policy-btn:disabled {
+        border: none;
+        border-radius: var(--radius, 10px);
+        padding: 10px 14px;
+        font-size: 1rem;
+        cursor: pointer;
+        background: linear-gradient(135deg, var(--primary-start, #ffffff), var(--primary-end, #ff7878));
+        color: #ffffff;
+        } */
+
+        /* 可滚动正文 */
+        .policy-article{
+        width:100%;
+        max-width:800px;
+        max-height:70vh;     /* 关键：限制高度，内部滚动 */
+        overflow:auto;
+        padding:12px 14px;
+        border:1px solid #ddd;
+        border-radius:8px;
+        background:#fff;
+        }
+
+        /* 文字排版优化 */
+        .policy-article h3{
+        margin:14px 0 8px;
+        font-size:1.05rem;
+        }
+        .policy-article p{
+        margin:8px 0;
+        line-height:1.6;
+        }
+        .policy-article ul{
+        margin:8px 0 8px 1.2em;
+        padding:0;
+        }
+        .policy-article li{
+        margin:6px 0;
+        }
+
+
+        /* 打开覆盖层时，禁止背景滚动 */
+        .no-scroll { overflow: hidden !important; }
+
+        /* 仅让文字版作为覆盖层显示在最上层 */
+        #policy-text-page.overlay-open{
+        display: grid !important;         /* 覆盖 .page 的 display:none !important */
+        place-items: center;
+        position: fixed; inset: 0;
+        z-index: 5000;
+        background: rgba(0,0,0,.6);
+        }
+
+        /* 让原有容器像对话框一样显示（不改你已有结构/ID） */
+        #policy-text-page.overlay-open .policy-container{
+        width: min(92vw, 820px);
+        max-height: 90vh;
+        overflow: hidden;
+        background: var(--bg, #fff);
+        color: var(--fg, #000);
+        border-radius: var(--radius, 10px);
+        box-shadow: 0 20px 60px rgba(0,0,0,.3);
+        padding: 16px;
+        display: grid;
+        grid-template-rows: auto 1fr auto auto;
+        gap: 12px;
+        }
+
+        /* 文字滚动区域保持可滚动 */
+        #policy-text-page .policy-article{
+        max-height: 70vh;
+        overflow: auto;
+        border: 1px solid #e5e5e5;
+        border-radius: 8px;
+        background: #fff;
+        padding: 8px;
+        }
+
+        /*图片预加载*/
+        /* 让覆盖层能绝对定位在图片上方 */
+        .image-container { position: relative; }
+
+        /* 图片淡入，避免闪烁 */
+        .test-image { transition: opacity .15s ease; }
+        .img-loading { opacity: 0; }
+
+        /* 覆盖层：骨架底色 + 居中 spinner */
+        .loading-overlay{
+        position: absolute; inset: 0;
+        display: none;                /* 默认隐藏，JS 控制 */
+        align-items: center; justify-content: center;
+        background: #f2f3f5;          /* 骨架底色，可调 */
+        border-radius: 8px;
+        overflow: hidden;
+        }
+
+        /* 骨架闪动（可选：比纯 spinner 更饱满） */
+        .loading-overlay::before{
+        content:"";
+        position:absolute; inset:0;
+        background: linear-gradient(90deg,#f2f3f5 0%,#e9ecef 50%,#f2f3f5 100%);
+        background-size: 200% 100%;
+        animation: shimmer 1.1s infinite linear;
+        opacity:.7;
+        }
+        @keyframes shimmer { to { background-position: -200% 0; } }
+
+        /* 中间的小 spinner（叠在骨架上） */
+        .spinner{
+        width: 36px; height: 36px;
+        border: 3px solid rgba(0,0,0,.15);
+        border-top-color: var(--primary-start, #1a73e8);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        z-index: 1;
+        background: transparent;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+
+
+        /* 单选框样式 */
+        .policy-radio-group {
+            margin: 1.5rem 0;
+        }
+        
+        .radio-option {
+            margin: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .policy-radio {
+            width: 1.2rem;
+            height: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .radio-label {
+            font-size: 1rem;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* loading样式 */
+        #loading-screen {
+        position:fixed;top:0;left:0;right:0;bottom:0;
+        background:#111;color:#fff;display:none;
+        flex-direction:column;align-items:center;justify-content:center;
+        font-family:sans-serif;z-index:9999;
+        }
+        #loading-bar-wrapper {
+        width:60%;height:10px;background:#333;margin-top:20px;
+        }
+        #loading-bar {
+        width:0%;height:100%;background:#4caf50;
+        }
+        /* 隐藏容器，放预加载的图片 */
+        #preload-container {
+        display:none;
+        }
+
+
+
+        
+
+        .instruction-list {
+            list-style-position: inside; /* 让列表项的标记和文本对齐 */
+            padding-left: 0; /* 移除默认的左侧填充 */
+            display: inline-block; /* 让列表变成内联块元素，保持居中 */
+            text-align: left; /* 让列表项的文本左对齐 */
+        }
+
+        .instruction-list li {
+            text-align: left; /* 确保每个列表项的文本左对齐 */
+            font-size: 1.2rem; /* 增加字体大小，调整为更合适的大小 */
+        }
+
+
+        .policy-text {
+            text-align: left;
+            max-width: 800px;        /* 宽度窄一些 */
+            height: 60vh;            /* 高度占视口 80% */
+            margin: 0 auto;          /* 居中 */
+            overflow-y: auto;        /* 超出部分滚动 */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .policy-logo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 每行三个 */
+            gap: 10px; /* logo 间距 */
+            max-width: 800px; /* 可选：和 policy-text 对齐 */
+            margin: 0 auto 20px auto; /* 居中，底部留点空隙 */
+        }
+
+        .policy-logo-grid img {
+            max-height: 60px;
+            object-fit: contain;
+            width: 100%; /* 让 logo 撑满格子宽度（但保持比例） */
+        }
+
+        /* 半透明背景 */
+        .custom-alert-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        /* 提示框主体 */
+        .custom-alert-box {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 80%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            text-align: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* 动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .custom-alert-box h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+
+        .custom-alert-actions {
+            margin-top: 15px;
+        }
+
+        .custom-alert-actions button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            background: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .custom-alert-actions button:hover {
+            background: #0056b3;
+        }
+
+        .introduction-nav {
+            margin-top: 20px;
+            text-align: center; /* 让内部按钮居中 */
+        }
+
+        #feedback-form textarea {
+            resize: none;
+        }
+
+        

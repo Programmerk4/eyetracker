@@ -1,0 +1,70 @@
+{
+  "pre_load_path": [
+    "test_few_dataset/GPT-5/Fake/GPT-5(1).png",
+    "test_few_dataset/GPT-5/Fake/GPT-5(2).png",
+    "test_few_dataset/GPT-5/Fake/GPT-5(3).png",
+    "test_few_dataset/GPT-5/Fake/GPT-5(4).png",
+    "test_few_dataset/GPT-5/Fake/GPT-5(5).png",
+
+    "test_few_dataset/GPT-5/Real/FFHD(1).png",
+    "test_few_dataset/GPT-5/Real/FFHD(2).png",
+    "test_few_dataset/GPT-5/Real/FFHD(3).png",
+    "test_few_dataset/GPT-5/Real/FFHD(4).png",
+    "test_few_dataset/GPT-5/Real/FFHD(5).png",
+
+    "test_few_dataset/GRAM-HD/Fake/GRAM-HD(1).png",
+    "test_few_dataset/GRAM-HD/Fake/GRAM-HD(2).png",
+    "test_few_dataset/GRAM-HD/Fake/GRAM-HD(3).png",
+    "test_few_dataset/GRAM-HD/Fake/GRAM-HD(4).png",
+    "test_few_dataset/GRAM-HD/Fake/GRAM-HD(5).png",
+
+    "test_few_dataset/GRAM-HD/Real/FFHD(1).png",
+    "test_few_dataset/GRAM-HD/Real/FFHD(2).png",
+    "test_few_dataset/GRAM-HD/Real/FFHD(3).png",
+    "test_few_dataset/GRAM-HD/Real/FFHD(4).png",
+    "test_few_dataset/GRAM-HD/Real/FFHD(5).png",
+
+    "test_few_dataset/SD3.5/Fake/SD3.5(1).png",
+    "test_few_dataset/SD3.5/Fake/SD3.5(2).png",
+    "test_few_dataset/SD3.5/Fake/SD3.5(3).png",
+    "test_few_dataset/SD3.5/Fake/SD3.5(4).png",
+    "test_few_dataset/SD3.5/Fake/SD3.5(5).png",
+
+    "test_few_dataset/SD3.5/Real/FFHD(1).png",
+    "test_few_dataset/SD3.5/Real/FFHD(2).png",
+    "test_few_dataset/SD3.5/Real/FFHD(3).png",
+    "test_few_dataset/SD3.5/Real/FFHD(4).png",
+    "test_few_dataset/SD3.5/Real/FFHD(5).png",
+
+    "test_few_dataset/StyleGAN2/Fake/StyleGAN2(1).png",
+    "test_few_dataset/StyleGAN2/Fake/StyleGAN2(2).png",
+    "test_few_dataset/StyleGAN2/Fake/StyleGAN2(3).png",
+    "test_few_dataset/StyleGAN2/Fake/StyleGAN2(4).png",
+    "test_few_dataset/StyleGAN2/Fake/StyleGAN2(5).png",
+
+    "test_few_dataset/StyleGAN2/Real/FFHD(1).png",
+    "test_few_dataset/StyleGAN2/Real/FFHD(2).png",
+    "test_few_dataset/StyleGAN2/Real/FFHD(3).png",
+    "test_few_dataset/StyleGAN2/Real/FFHD(4).png",
+    "test_few_dataset/StyleGAN2/Real/FFHD(5).png",
+
+    "test_few_dataset/StyleGAN3/Fake/StyleGAN3(1).png",
+    "test_few_dataset/StyleGAN3/Fake/StyleGAN3(2).png",
+    "test_few_dataset/StyleGAN3/Fake/StyleGAN3(3).png",
+    "test_few_dataset/StyleGAN3/Fake/StyleGAN3(4).png",
+    "test_few_dataset/StyleGAN3/Fake/StyleGAN3(5).png",
+
+    "test_few_dataset/StyleGAN3/Real/FFHD(1).png",
+    "test_few_dataset/StyleGAN3/Real/FFHD(2).png",
+    "test_few_dataset/StyleGAN3/Real/FFHD(3).png",
+    "test_few_dataset/StyleGAN3/Real/FFHD(4).png",
+    "test_few_dataset/StyleGAN3/Real/FFHD(5).png",
+
+    "train_examples/1.png",
+    "train_examples/1res.png",
+    "train_examples/2.png",
+    "train_examples/2res.png",
+    "train_examples/8.png",
+    "train_examples/8.png"
+  ]
+}

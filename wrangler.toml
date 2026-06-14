@@ -1,0 +1,15 @@
+name = "eyetracker"
+compatibility_date = "2024-06-20"
+
+pages_build_output_dir = "./"
+
+services = [
+  { binding = "ALLOCATOR", service = "allocator-worker" }
+]
+
+[vars]
+SUPABASE_URL = "https://yopydkhqzlguhjapoecv.supabase.co"
+SUPABASE_ANON_KEY = "sb_publishable_JWuD2ShkrRSBjBeTzxOyEQ_6ywj0jHi"
+SUPABASE_SERVICE_ROLE = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlvcHlka2hxemxndWhqYXBvZWN2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MTE2NTU0MiwiZXhwIjoyMDk2NzQxNTQyfQ.fefNAbZKwHgHwZl0Gcs3GiavoR7sp3WCDq3ldGVP7Lw"
+
+

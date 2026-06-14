@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy</title>
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --card:#111317;
+      --text:#e8eaed;
+      --muted:#b8b9bd;
+      --brand:#4e9af1;
+      --border:#2a2d33;
+    }
+    *{box-sizing:border-box;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,Apple Color Emoji,Segoe UI Emoji;line-height:1.6;}
+    a{color:var(--brand);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    .page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;}
+    .policy-container{
+      width:min(900px, 100%);
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:1.25rem;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      overflow:hidden;
+    }
+    .policy-container header{
+      padding:1.25rem 1.5rem;
+      border-bottom:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.04), transparent);
+    }
+    h2{margin:0 0 .25rem 0;font-size:1.5rem;}
+    .policy-subtitle{margin:0;color:var(--muted);font-size:.95rem;}
+    .policy-article{
+      max-height:70vh;
+      overflow:auto;
+      padding:1.25rem 1.5rem;
+      scroll-behavior:smooth;
+    }
+    h3{margin:1.5rem 0 .5rem;}
+    ul{padding-left:1.25rem;}
+    .policy-actions{
+      display:flex;
+      justify-content:flex-end;
+      gap:.75rem;
+      padding:1rem 1.5rem;
+      border-top:1px solid var(--border);
+      background:linear-gradient(0deg, rgba(255,255,255,.04), transparent);
+    }
+    .policy-btn{
+      appearance:none;border:1px solid var(--border);
+      background:#1a1d22;color:var(--text);
+      padding:.6rem 1rem;border-radius:.75rem;cursor:pointer;font-weight:600;
+    }
+    .policy-btn:hover{background:#20252b;}
+  </style>
+</head>
+<body>
+  <div id="policy-text-page" class="page">
+    <div class="policy-container" role="region" aria-label="Privacy Policy">
+      <header>
+        <h2>Privacy Policy</h2>
+        <p class="policy-subtitle">Research project website</p>
+      </header>
+
+      <!-- Scrollable body -->
+      <article class="policy-article">
+        <p>Thank you for visiting our research project website. This privacy policy explains how we collect, use, store and protect your information when you visit this website to participate in our research project.</p>
+
+        <h3>Data Collected</h3>
+        <p>To conduct this research, we will collect the following types of information:</p>
+        <ul>
+          <li>You will be asked to answer demographic questions.</li>
+          <li>Information regarding your knowledge on ICT and technology competency.</li>
+          <li>Your performance in the deepfake detection tasks, including your answers and self-reported confidence and stress levels.</li>
+        </ul>
+        <p>This study is designed to be anonymous and will not collect any personally identifiable or sensitive data. All data will be identified only by a code.</p>
+
+        <h3>How We Use These Data</h3>
+        <p>Specifically, the collected data will be used to:</p>
+        <ul>
+          <li>Investigate whether simple and quick training can effectively improve people's performance in detecting deepfake facial images.</li>
+          <li>Examine what factors may affect people’s performance in deepfake detection.</li>
+          <li>Publish, present, and communicate the aggregated and anonymized results in scientific journals, at conferences, and on the websites of the research team members.</li>
+          <li>Help guide the creation of training programs and public awareness campaigns on digital literacy and detecting deceptive online content.</li>
+        </ul>
+
+        <h3>Data Protection</h3>
+        <p>We take your data security very seriously and have implemented strict measures to protect your information:</p>
+        <ul>
+          <li>The data you provide through the online questionnaire will first be stored by Supabase, whose privacy policy can be viewed here: <a href="https://supabase.com/privacy" target="_blank" rel="noopener">https://supabase.com/privacy</a>. After the survey is closed, any data that could potentially identify an individual will be transferred to a secure server at the Cambridge Judge Business School, accessible only by authorized IT staff and the research team.</li>
+          <li>We will make every effort to ensure that your identity will not be identified. All data will be identified only by a code, and personal details will be kept in a locked file or on a secure computer accessible only by the immediate research team members.</li>
+        </ul>
+
+        <h3>Your Rights</h3>
+        <ul>
+          <li>You have several rights regarding your data:</li>
+          <li>You have the right to access the personal data we hold about you.</li>
+          <li>Participation is entirely voluntary. You are free to withdraw at any time during the survey without giving a reason by closing your browser. A decision to withdraw will not affect you in any way and will involve no penalty or loss.</li>
+        </ul>
+        <p>To exercise any of these rights, please contact the research team using the details provided below.</p>
+
+        <h3>Changes to This Privacy Policy</h3>
+        <p>We may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date. We encourage you to periodically review this page for the latest information on our privacy practices.</p>
+
+        <h3>Contact Us</h3>
+        <p>If you have any questions or concerns about this privacy policy or our data handling practices, please feel free to contact the researcher: Dr Luning Sun, University of Cambridge (<a href="mailto:l.sun@jbs.cam.ac.uk">l.sun@jbs.cam.ac.uk</a>).</p>
+      </article>
+
+      <div class="policy-actions">
+        <button class="policy-btn" onclick="window.close()">Close</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
