@@ -3,9 +3,6 @@ compatibility_date = "2024-06-20"
 
 pages_build_output_dir = "./"
 
-#services = [
-#  { binding = "ALLOCATOR", service = "allocator-worker" }
-#]
 
 [vars]
 SUPABASE_URL = "https://yopydkhqzlguhjapoecv.supabase.co"
