@@ -1,0 +1,80 @@
+{
+  "database": "https://jctqmbsxufpqylqbouwg.supabase.co/storage/v1/object/public/gbucket/",
+  "single_group": {
+    "name": "single_mix",
+    "description": "Single-group, single-image-only configuration. pre_* is used for Pre-training; post_* is used for Post-training.",
+    "pre_fake": [
+      "test_few_dataset/Mix/Fake/pre_single/GPT-5.png",
+      "test_few_dataset/Mix/Fake/pre_single/GRAM-HD.png",
+      "test_few_dataset/Mix/Fake/pre_single/SD3.5.png",
+      "test_few_dataset/Mix/Fake/pre_single/StyleGAN2.png",
+      "test_few_dataset/Mix/Fake/pre_single/StyleGAN3.png"
+    ],
+    "pre_real": [
+      "test_few_dataset/Mix/Real/FFHD(1).png",
+      "test_few_dataset/Mix/Real/FFHD(2).png",
+      "test_few_dataset/Mix/Real/FFHD(3).png",
+      "test_few_dataset/Mix/Real/FFHD(4).png",
+      "test_few_dataset/Mix/Real/FFHD(5).png"
+    ],
+    "post_fake": [
+      "test_few_dataset/Mix/Fake/final_single/GPT-5.png",
+      "test_few_dataset/Mix/Fake/final_single/GRAM-HD.png",
+      "test_few_dataset/Mix/Fake/final_single/SD3.5.png",
+      "test_few_dataset/Mix/Fake/final_single/StyleGAN2.png",
+      "test_few_dataset/Mix/Fake/final_single/StyleGAN3.png"
+    ],
+    "post_real": [
+      "test_few_dataset/Mix/Real/FFHD(6).png",
+      "test_few_dataset/Mix/Real/FFHD(7).png",
+      "test_few_dataset/Mix/Real/FFHD(8).png",
+      "test_few_dataset/Mix/Real/FFHD(9).png",
+      "test_few_dataset/Mix/Real/FFHD(10).png"
+    ],
+    "train_examples": [
+      "train_examples/Mix/1.png",
+      "train_examples/Mix/1res.png",
+      "train_examples/Mix/2.png",
+      "train_examples/Mix/2res.png",
+      "train_examples/Mix/8.png",
+      "train_examples/Mix/8.png",
+      "train_examples/Mix/3.png",
+      "train_examples/Mix/3res.png",
+      "train_examples/Mix/4.png",
+      "train_examples/Mix/4res.png",
+      "train_examples/Mix/9.png",
+      "train_examples/Mix/9.png",
+      "train_examples/Mix/5.png",
+      "train_examples/Mix/5res.png",
+      "train_examples/Mix/6.png",
+      "train_examples/Mix/6res.png",
+      "train_examples/Mix/7.png",
+      "train_examples/Mix/7res.png",
+      "train_examples/Mix/10.png",
+      "train_examples/Mix/10.png"
+    ],
+    "train_text": [
+      "",
+      "This is a fake image. When we look closely at the boundary between the background and the face, we can see unnatural blurring. In addition, the hair area is poorly distinguished from the face, which is another typical sign of manipulation. As shown in the figure, please enlarge the image.",
+      "",
+      "This is a fake image. When we enlarge the face and examine the skin details closely, we can see strange patterns across most of the skin, which is a clear sign of manipulation. In addition, the face shows three front teeth, and the clothing blended onto the skin looks unnatural.",
+      "",
+      "This is a real image. The facial features, accessories, and background all appear natural and consistent. There are no visible artifacts, and the image shows no signs of blending errors or unnatural distortions.",
+      "",
+      "This is a fake image. The hair sticks to the forehead in an unnatural way. In addition, there are odd layered lines around the edges of the face. As shown in the red box in the figure.",
+      "",
+      "This image is fake. Overall, it looks more like a painting than a real photo. If you zoom in, you’ll see that the skin and facial hair have a painted, unnatural look.",
+      "",
+      "This is a real image. Although the background is relatively simple, no abnormalities can be found in the facial region. The facial features, accessories, and background all appear natural and consistent. There are no visible artifacts or signs of blending errors.",
+      "",
+      "This is a fake image. When we zoom in, we can see that the left and right arms of the eyeglasses have different shapes. Parts of the glasses also blend unnaturally into the hair. Using eyeglasses as a cue is a common and effective way to identify fake images.",
+      "",
+      "This is a fake image. The hair on the forehead stuck to the skin. In addition, the hair and ears on the left side are rendered abnormally and blurred. As shown in the red box in the figure.",
+      "",
+      "This is a fake image. There is an obvious abnormal blending between the hair and the ear on the side of the face. In addition, the teeth appear unusual, with the subject seemingly having three front teeth, which is anatomically incorrect.",
+      "",
+      "This is a real image. The facial features, accessories, and background all appear natural and consistent. There are no visible artifacts, and the image shows no signs of blending errors or unnatural distortions."
+    ],
+    "video_url": "https://jctqmbsxufpqylqbouwg.supabase.co/storage/v1/object/public/gbucket/training_video/Mix.mp4"
+  }
+}
